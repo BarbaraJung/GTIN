@@ -1,0 +1,62 @@
+﻿using System;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            Console.WriteLine("Geben Sie eine GTIN ein");
+            String gtin = Console.ReadLine();
+
+            ValidiereGTIN(gtin);
+        }
+
+        private static void ValidiereGTIN(string gtin)
+        {
+            Int32 summe, faktor, zahl, index, wert;
+
+            if (gtin.Length == 12)
+            {
+                zahl = 1;
+                summe = 0;
+                faktor = 3;
+                index = 0;
+
+                while (index < 13)
+                {
+                    index = index + 1;
+                    zahl = Convert.ToInt32(gtin[index].ToString());
+
+                    if (faktor == 1)
+                    {
+                        faktor = 3;
+                    }
+                    else
+                    {
+                        faktor = 1;
+                    }
+
+                    wert = zahl * faktor;
+                    summe = summe + wert;
+                }
+
+                wert = summe % 10;
+                zahl = Convert.ToInt32(gtin[12].ToString());
+                wert = wert + zahl;
+
+                if (wert == 10)
+                {
+                    Console.WriteLine("GTIN ist korrekt");
+                }
+                else
+                {
+                    Console.WriteLine("GTIN ist fehlerhaft");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("GTIN ist fehlerhaft");
+            }
+        }
+    }	    
