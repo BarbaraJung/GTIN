@@ -17,7 +17,7 @@
 
             if (gtin.Length == 12)
             {
-                zahl = 1;
+                //zahl = 1;
                 summe = 0;
                 faktor = 3;
                 index = 0;
